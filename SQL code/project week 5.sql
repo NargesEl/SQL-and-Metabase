@@ -65,10 +65,10 @@ WHERE discontinued = 1;
 
 
 9. Count current and discontinued products.
-?????????????????????
-SELECT productID, productname, COUNT(DISTINCT discontinued)
-FROM products;
-????????????????????????
+
+SELECT COUNT(productname)
+FROM products
+GROUP BY discontinued;
 
 10. Find products with less units in stock than the quantity on order.
 
@@ -80,7 +80,7 @@ WHERE unitsinstock < unitsinorder;
 11. Find the customer who had the highest order amount
 
 SELECT o.customerID, od.quantity AS order_amount_customer
-From orders as o JOIN order_details AS od ON o.orderID = od.orderID
+From orders as o INNER JOIN order_details AS od ON o.orderID = od.orderID
 ORDER BY od.quantity DESC LIMIT 1;
 
 
